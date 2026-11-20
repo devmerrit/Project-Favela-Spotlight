@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Looking at infrastructure gaps, sanitation issues, and crime and pacification data in Brazil's favelas." />
+  <title>The Reality | Project Spotlight Favela - Brazil</title>
+
+  <!-- Bootstrap 5 CSS -->
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+    crossorigin="anonymous"
+  />
+
+  <style>
+    :root {
+      --bg-dark: #2B2B33;
+      --bg-mid: #4D4D66;
+      --surface-indigo: #545499;
+      --accent-periwinkle: #4747CC;
+      --accent-electric: #2625FF;
+      --text-light: #F4F5FA;
+      --text-muted: #D2D5E8;
+      --border-subtle: rgba(244, 245, 250, 0.16);
+    }
+
+    body.bg-slate-dark {
+      background-color: var(--bg-dark);
+      color: var(--text-light);
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      line-height: 1.6;
+    }
+
+    .display-font {
+      font-family: "Redaction 10", Georgia, "Times New Roman", serif;
+      letter-spacing: -0.01em;
+    }
+
+    .text-muted-light {
+      color: var(--text-muted);
+    }
+
+    .bg-slate-dark {
+      background-color: var(--bg-dark);
+    }
+
+    .bg-slate-mid {
+      background-color: var(--bg-mid);
+    }
+
+    .border-slate-accent {
+      border-color: var(--border-subtle) !important;
+    }
+
+    .skip-link {
+      position: absolute;
+      top: -48px;
+      left: 16px;
+      z-index: 2000;
+      background-color: var(--accent-electric);
+      color: #FFFFFF;
+      padding: 10px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      text-decoration: none;
+    }
+
+    .skip-link:focus {
+      top: 12px;
+    }
+
+    a:focus-visible,
+    button:focus-visible {
+      outline: 3px solid #FFFFFF;
+      outline-offset: 2px;
+      box-shadow: 0 0 0 5px var(--accent-electric);
+    }
+
+    .site-header {
+      background-color: var(--bg-dark);
+    }
+
+    .brand-title {
+      color: var(--text-light) !important;
+      font-size: 1.25rem;
+    }
+
+    .navbar-dark .navbar-nav .nav-link {
+      color: var(--text-muted);
+      border-radius: 6px;
+      padding: 0.45rem 0.75rem;
+    }
+
+    .navbar-dark .navbar-nav .nav-link:hover,
+    .navbar-dark .navbar-nav .nav-link:focus {
+      color: #FFFFFF;
+      background-color: var(--bg-mid);
+    }
+
+    .navbar-dark .navbar-nav .nav-link.active-page {
+      color: #FFFFFF;
+      background-color: var(--accent-periwinkle);
+      border-bottom: 3px solid var(--accent-electric);
+      font-weight: 600;
+    }
+
+    .surface-card {
+      background-color: var(--bg-mid);
+      color: var(--text-light);
+    }
+
+    .stat-box {
+      background-color: rgba(43, 43, 51, 0.75);
+      border: 1px solid var(--border-subtle);
+    }
+
+    .stat-number {
+      font-size: 1.35rem;
+      color: #FFFFFF;
+    }
+
+    .badge-electric {
+      background-color: var(--accent-electric);
+      color: #FFFFFF;
+      font-weight: 600;
+      padding: 0.45em 0.75em;
+    }
+
+    .badge-indigo {
+      background-color: var(--surface-indigo);
+      color: #FFFFFF;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .btn-electric {
+      background-color: var(--accent-electric);
+      border-color: var(--accent-electric);
+      color: #FFFFFF;
+    }
+
+    .btn-electric:hover,
+    .btn-electric:focus {
+      background-color: var(--accent-periwinkle);
+      border-color: #FFFFFF;
+      color: #FFFFFF;
+    }
+
+    .btn-outline-light-custom {
+      color: var(--text-light);
+      border: 1px solid var(--text-light);
+      background-color: transparent;
+    }
+
+    .btn-outline-light-custom:hover,
+    .btn-outline-light-custom:focus {
+      background-color: var(--surface-indigo);
+      color: #FFFFFF;
+    }
+
+    .inline-link {
+      color: #FFFFFF;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    .inline-link:hover {
+      color: var(--text-muted);
+    }
+
+    .custom-table {
+      --bs-table-bg: var(--bg-dark);
+      --bs-table-striped-bg: rgba(84, 84, 153, 0.22);
+      --bs-table-hover-bg: rgba(71, 71, 204, 0.3);
+      color: var(--text-light);
+    }
+  </style>
+</head>
+<body class="bg-slate-dark">
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
+  <header class="sticky-top site-header border-bottom border-slate-accent">
+    <nav class="navbar navbar-expand-lg navbar-dark py-3" aria-label="Primary navigation">
+      <div class="container">
+        <a class="navbar-brand brand-title fw-bold" href="reality.html">
+          Favela Spotlight
+        </a>
+
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#mainNavbar"
+          aria-controls="mainNavbar"
+          aria-expanded="false"
+          aria-label="Toggle navigation menu"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="mainNavbar">
+          <ul class="navbar-nav ms-auto gap-lg-2">
+            <li class="nav-item">
+              <a class="nav-link active-page" aria-current="page" href="reality.html">The Reality</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#infrastructure">Infrastructure &amp; Sanitation</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#crime-pacification">Crime &amp; Pacification</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#summary-table">Policy Summary</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main id="main-content">
+    <section class="hero-section py-5 border-bottom border-slate-accent">
+      <div class="container py-lg-3">
+        <div class="row g-4 align-items-center">
+          <div class="col-lg-6">
+            <span class="badge badge-electric mb-3">UN SDGs 1, 3 &amp; 10</span>
+            <h1 class="display-4 display-font mb-3">
+              The Reality Behind Brazil's Favelas
+            </h1>
+            <p class="lead text-muted-light mb-4">
+              Years of uneven city planning have left many favela communities without reliable
+              infrastructure, clean sanitation, or steady public safety. Even with these issues,
+              residents still organize and support each other every day.
+            </p>
+
+            <div class="row g-3 mb-4">
+              <div class="col-sm-4">
+                <div class="stat-box p-3 rounded-3 h-100">
+                  <div class="stat-number fw-bold">62.5%</div>
+                  <div class="small text-muted-light">
+                    Brazil pop. on sewage network (IBGE 2022 Census; favela rates are lower)
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-4">
+                <div class="stat-box p-3 rounded-3 h-100">
+                  <div class="stat-number fw-bold">2008</div>
+                  <div class="small text-muted-light">
+                    Year Rio started its first UPP pacification unit in Santa Marta
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-4">
+                <div class="stat-box p-3 rounded-3 h-100">
+                  <div class="stat-number fw-bold">SDG 1, 3, 10</div>
+                  <div class="small text-muted-light">
+                    Poverty, health and well-being, and reduced inequalities
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="d-flex flex-wrap gap-3">
+              <a href="#infrastructure" class="btn btn-electric px-4 py-2 fw-semibold">
+                Check Infrastructure &amp; Sanitation
+              </a>
+              <a href="#crime-pacification" class="btn btn-outline-light-custom px-4 py-2">
+                Crime &amp; Pacification Data
+              </a>
+            </div>
+          </div>
+
+          <div class="col-lg-6">
+            <div class="card surface-card border-0 shadow-sm overflow-hidden">
+              <div class="row g-0">
+                <div class="col-6 border-end border-slate-accent p-4 text-center">
+                  <h2 class="h5 fw-bold mb-2">Formal City Areas</h2>
+                  <p class="small text-muted-light mb-0">
+                    Paved streets, city sewer lines, working streetlights, and faster emergency access.
+                  </p>
+                </div>
+                <div class="col-6 p-4 text-center">
+                  <h2 class="h5 fw-bold mb-2">Informal Hillside Areas</h2>
+                  <p class="small text-muted-light mb-0">
+                    Steep narrow walkways, spotty utility hookups, and less public sanitation coverage.
+                  </p>
+                </div>
+              </div>
+              <div class="card-body border-top border-slate-accent">
+                <p class="card-text small text-muted-light mb-0">
+                  Uneven city spending often separates formal neighborhoods from hillside or outer
+                  favelas, which affects daily health, travel, and job opportunities.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="infrastructure" class="py-5">
+      <div class="container">
+        <div class="row mb-4">
+          <div class="col-lg-8">
+            <h2 class="h1 display-font mb-2">Infrastructure Gaps &amp; Sanitation Issues</h2>
+            <p class="text-muted-light mb-0">
+              Basic services like clean water, sewage pipes, trash pickup, and reliable transit are
+              essential for everyday health (SDG 3) and financial stability (SDG 1 &amp; SDG 10).
+            </p>
+          </div>
+        </div>
+
+        <div class="row g-4">
+          <div class="col-md-6 col-lg-4">
+            <article class="card surface-card h-100 border-0">
+              <div class="card-body d-flex flex-column">
+                <span class="badge badge-indigo align-self-start mb-2">Sanitation &amp; Health</span>
+                <h3 class="h4 card-title">Sewage &amp; Water Access</h3>
+                <p class="card-text text-muted-light">
+                  Brazil's 2022 Census showed 62.5% of people lived in homes connected to a sewage
+                  network, with big gaps across different regions, income levels, and race. In crowded
+                  informal areas, open drainage and weak water pressure raise the risk of waterborne
+                  sickness.
+                </p>
+                <p class="small text-muted-light mt-auto pt-3 mb-0 border-top border-slate-accent">
+                  <strong>Source:</strong> IBGE 2022 Census &amp; Atlas of Basic Sanitation.
+                </p>
+              </div>
+            </article>
+          </div>
+
+          <div class="col-md-6 col-lg-4">
+            <article class="card surface-card h-100 border-0">
+              <div class="card-body d-flex flex-column">
+                <span class="badge badge-indigo align-self-start mb-2">City Access</span>
+                <h3 class="h4 card-title">Hillsides, Streets &amp; Utilities</h3>
+                <p class="card-text text-muted-light">
+                  Many favelas were built on steep hills or flood-prone areas where heavy trucks and
+                  standard utility lines cannot easily reach. Narrow alleys and steep stairs can slow
+                  down ambulances, garbage pickup, and daily commutes to work.
+                </p>
+                <p class="small text-muted-light mt-auto pt-3 mb-0 border-top border-slate-accent">
+                  <strong>Impact:</strong> Longer commutes and higher delivery costs for families and
+                  local small businesses.
+                </p>
+              </div>
+            </article>
+          </div>
+
+          <div class="col-md-12 col-lg-4">
+            <article class="card surface-card h-100 border-0">
+              <div class="card-body d-flex flex-column">
+                <span class="badge badge-indigo align-self-start mb-2">Inequality &amp; Opportunity</span>
+                <h3 class="h4 card-title">Service Gaps &amp; Poverty</h3>
+                <p class="card-text text-muted-light">
+                  Missing infrastructure does not happen on its own. It usually comes alongside fewer
+                  nearby clinics, underfunded schools, fewer formal jobs, and unclear land titles,
+                  making it harder for families to get ahead.
+                </p>
+                <p class="small text-muted-light mt-auto pt-3 mb-0 border-top border-slate-accent">
+                  <strong>SDG Link:</strong> Connected directly to UN SDGs 1, 3, and 10.
+                </p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="crime-pacification" class="py-5 bg-slate-mid border-top border-bottom border-slate-accent">
+      <div class="container">
+        <div class="row mb-4">
+          <div class="col-lg-9">
+            <h2 class="h1 display-font mb-2">Crime Data &amp; Pacification History</h2>
+            <p class="text-muted-light mb-0">
+              Violence in and around favelas comes from years of territory fights between armed
+              groups and militias, along with strict policing policies that had mixed results.
+            </p>
+          </div>
+        </div>
+
+        <div class="row g-4">
+          <div class="col-lg-6">
+            <div class="card surface-card h-100 border-0">
+              <div class="card-body">
+                <h3 class="h4 card-title">Territory Fights &amp; Crime Patterns</h3>
+                <p class="text-muted-light">
+                  Crime rates are not the same in every favela or neighborhood. Public health and
+                  crime studies in Rio de Janeiro show that violence spikes most around disputed
+                  borders where rival trafficking groups and militias fight for control, putting
+                  regular residents and passersby in danger.
+                </p>
+                <ul class="text-muted-light mb-0">
+                  <li>Rival group turf fights cause sharp spikes in local shootings and violence.</li>
+                  <li>Residents in low-income communities often take the biggest hit from these conflicts.</li>
+                  <li>
+                    <strong>Data Note:</strong> Always compare per-100,000-resident rates and exact
+                    reporting years when checking state public security statistics (ISP).
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-6">
+            <div class="card surface-card h-100 border-0">
+              <div class="card-body">
+                <h3 class="h4 card-title">Pacification (UPP) &amp; Mixed Results</h3>
+                <p class="text-muted-light">
+                  Starting in 2008 with Santa Marta and expanding before major international events,
+                  Rio de Janeiro set up Pacifying Police Units (UPPs) to take back territory from
+                  armed groups, place permanent police stations, and pair security with social programs.
+                </p>
+                <ul class="text-muted-light mb-0">
+                  <li>
+                    Evaluations found fewer police-related deaths in many UPP areas during early years,
+                    though changes in overall homicide rates varied across different communities.
+                  </li>
+                  <li>
+                    Budget cuts, financial crises, and resident complaints about heavy-handed policing
+                    and missing social services made it hard to keep the program going long term.
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div id="summary-table" class="card surface-card border-0 mt-4">
+          <div class="card-body">
+            <h3 class="h5 card-title mb-3">Quick Summary: Main Issues &amp; Policy Context</h3>
+            <div class="table-responsive">
+              <table class="table table-dark table-striped table-hover align-middle mb-0 custom-table">
+                <thead>
+                  <tr>
+                    <th scope="col">Issue Area</th>
+                    <th scope="col">Main Problem</th>
+                    <th scope="col">Primary UN SDG Link</th>
+                    <th scope="col">Verification Source</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th scope="row">Sanitation &amp; Water</th>
+                    <td>Incomplete sewer and water hookups plus drainage gaps</td>
+                    <td>SDG 3 &amp; SDG 6 / 10</td>
+                    <td>IBGE Census &amp; Sanitation Atlas</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Physical Infrastructure</th>
+                    <td>Steep hills, narrow alleys, and uneven utility reach</td>
+                    <td>SDG 1 &amp; SDG 10</td>
+                    <td>Municipal &amp; IBGE Urban Data</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Crime &amp; Policing (UPP)</th>
+                    <td>Armed group territory fights and uneven pacification results</td>
+                    <td>SDG 10 &amp; SDG 16</td>
+                    <td>ISP &amp; Peer-Reviewed Impact Studies</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="py-4 bg-slate-dark">
+    <div class="container d-flex flex-column flex-md-row justify-content-between align-items-center gap-2">
+      <p class="small text-muted-light mb-0">
+        Project Spotlight Favela - Brazil (Red Team) &bull; The Reality
+      </p>
+      <div class="d-flex gap-3 small">
+        <a href="#main-content" class="inline-link">Back to Top</a>
+      </div>
+    </div>
+  </footer>
+
+  <script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+    crossorigin="anonymous"
+  ></script>
+</body>
+</html>

@@ -1,0 +1,287 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Community-led responses to poverty in Brazil, highlighted by four case studies.">
+  <title>Community Solutions in Brazil</title>
+
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.9/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <style>
+    :root {
+      --blue: #2625FF;
+      --indigo: #4747CC;
+      --purple: #545499;
+      --slate: #4D4D66;
+      --ink: #2B2B33;
+      --paper: #F7F7FB;
+      --pale: #EEEEFF;
+      --line: #DEDEEA;
+    }
+
+    body {
+      background: var(--ink);
+      color: var(#fff);
+      font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+      line-height: 1.65;
+    }
+
+    .site-nav {
+      background: var(--indigo);
+      box-shadow: 0 4px 16px rgba(38, 37, 255, .16);
+    }
+
+    .site-nav .navbar-brand,
+    .site-nav .nav-link { color: #fff; }
+
+    .site-nav .nav-link {
+      font-weight: 600;
+      border-radius: .35rem;
+      padding: .5rem .7rem;
+    }
+
+    .site-nav .nav-link:hover,
+    .site-nav .nav-link:focus,
+    .site-nav .nav-link[aria-current="page"] {
+      color: #fff;
+      background: rgba(255,255,255,.16);
+    }
+
+    .page-wrap { max-width: 1180px; }
+
+    .page-frame {
+      background: var(--slate);
+      border: 3px solid var(--purple);
+      border-radius: 5px;
+      padding: clamp(1rem, 3vw, 2rem);
+      box-shadow: 0 10px 28px rgba(43,43,51,.08);
+    }
+
+    .hero {
+      background: var(--blue);
+      color: #fff;
+      border-radius: 5px;
+      padding: clamp(2rem, 5vw, 4rem);
+      min-height: 250px;
+      display: flex;
+      align-items: center;
+    }
+
+    .eyebrow {
+      text-transform: uppercase;
+      letter-spacing: .13em;
+      font-size: .76rem;
+      font-weight: 800;
+      opacity: .85;
+    }
+
+    .hero h1 {
+      max-width: 800px;
+      font-size: clamp(2.1rem, 5vw, 3.7rem);
+      line-height: 1.1;
+      font-weight: 800;
+    }
+
+    .hero p { max-width: 760px; font-size: 1.1rem; }
+
+    .section-label {
+      color: var(--pale);
+      text-transform: uppercase;
+      letter-spacing: .12em;
+      font-size: .75rem;
+      font-weight: 800;
+    }
+
+    .section-title { font-weight: 800; letter-spacing: -.025em; color: white;}
+
+    .intro-panel,
+    .case-card {
+      background: var(--purple);
+      border: 2px solid var(--blue);
+      color: var(--pale);
+      border-radius: 5px;
+      box-shadow: 0 5px 16px rgba(43,43,51,.05);
+      height: 100%;
+    }
+
+    .intro-panel { padding: 1.5rem; }
+    .case-card { padding: 1.5rem; border-top: 5px solid var(--blue); }
+
+    .case-number {
+      display: inline-grid;
+      place-items: center;
+      width: 2.35rem;
+      height: 2.35rem;
+      border-radius: 50%;
+      color: var(--pale);
+      background: var(--blue);
+      font-weight: 800;
+    }
+
+    .topic-tag {
+      display: inline-block;
+      background: var(--blue);
+      color: var(--pale);
+      border-radius: 50rem;
+      padding: .2rem .7rem;
+      font-size: .78rem;
+      font-weight: 700;
+    }
+
+    .site-footer {
+      background: var(--indigo);
+      color: #fff;
+      padding: 1.8rem 0;
+    }
+
+    .small-muted { color: #D0D0DC; font-size: .9rem; }
+
+    a:focus-visible {
+      outline: 3px solid #8D8DFF;
+      outline-offset: 3px;
+    }
+
+    .text-secondary { color: #fff !important}
+
+    @media (max-width: 767.98px) {
+      .page-frame { border-width: 2px; padding: .75rem; }
+      .hero { min-height: 230px; padding: 1.5rem; }
+      .case-card, .intro-panel { padding: 1.2rem; }
+      .site-nav .navbar-nav { gap: .2rem; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+    }
+  </style>
+</head>
+
+<body>
+  <a class="visually-hidden-focusable position-absolute top-0 start-0 p-3 bg-white" href="#main-content">Skip to main content</a>
+
+  <!-- Links to connect this page to other sections of the website. -->
+  <nav class="navbar navbar-expand site-nav">
+    <div class="container page-wrap flex-column flex-lg-row align-items-lg-center">
+      <a class="navbar-brand fw-bold mb-2 mb-lg-0" href="home.html">Beyond the Asphalt: Favela Spotlight</a>
+      <ul class="navbar-nav flex-row flex-wrap justify-content-center justify-content-lg-end ms-lg-auto">
+        <li class="nav-item"><a class="nav-link" href="home.html">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="reality.html">Reality</a></li>
+        <li class="nav-item"><a class="nav-link" href="solutions.html" aria-current="page">Solutions</a></li>
+        <li class="nav-item"><a class="nav-link" href="alignment.html">Alignment</a></li>
+        <li class="nav-item"><a class="nav-link" href="culture.html">Culture</a></li>
+        <li class="nav-item"><a class="nav-link" href="action.html">Action</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main id="main-content" class="container page-wrap py-4 py-lg-5">
+    <div class="page-frame">
+      <header class="hero mb-4">
+        <div>
+          <p class="eyebrow mb-3">Community knowledge · Collective action · Brazil</p>
+          <h1>Local solutions. Stronger communities.</h1>
+          <p class="mt-3 mb-0">Across Brazil, community groups are finding ways to respond to local challenges. These four case studies explore how residents can shape change and perception through participation, green spaces, arts, and storytelling.</p>
+        </div>
+      </header>
+
+      <section class="row g-3 mb-5" aria-labelledby="overview-heading">
+        <div class="col-lg-4">
+          <aside class="intro-panel">
+            <p class="section-label mb-2">Our focus</p>
+            <h2 class="h4 fw-bold" id="overview-heading">Community-led responses</h2>
+            <p class="mb-0">Poverty is connected to many structural issues, including unequal access to resources and opportunities. Local initiatives cannot shut every case closed, but they can help communities organize, share knowledge, and address specific needs.</p>
+          </aside>
+        </div>
+        <div class="col-lg-8">
+          <div class="intro-panel">
+            <p class="section-label mb-2">Why these examples?</p>
+            <h2 class="h4 fw-bold">Four ways communities can create change</h2>
+            <p class="mb-2">The examples below look at different forms of community action:</p>
+            <div class="d-flex flex-wrap gap-2">
+              <span class="topic-tag">Media</span>
+              <span class="topic-tag">Environment</span>
+              <span class="topic-tag">Arts &amp; culture</span>
+              <span class="topic-tag">Empowerment</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="case-studies" class="mb-4" aria-labelledby="cases-heading">
+        <div class="mb-3">
+          <p class="section-label mb-1">The Examples</p>
+          <h2 class="section-title h2" id="cases-heading">Community solutions in action</h2>
+          <p class="text-secondary mb-0">Four approaches that show how local knowledge and participation can contribute towards community wellbeing as well as UN Sustainable Development Goals 10 and 11.</p>
+        </div>
+
+        <div class="row g-3">
+          <div class="col-md-6">
+            <article class="case-card">
+              <span class="case-number">01</span>
+              <span class="topic-tag ms-2">Empowerment</span>
+              <span class="topic-tag ms-2">SDG 10</span>
+              <h3 class="h4 fw-bold mt-3">Rochina Self-Governance</h3>
+              <p>Rocinha has demonstrated how residents can take an active role in improving their community through grassroots organisations and collective action. Over the years, residents have established local groups to campaign for better living conditions, improved infrastructure and equal rights. For example, organisations such as Rocinha Without Borders encourage conversations between residents and authorities, allowing local people to influence decisions affecting their neighbourhood.</p>
+              <p>Another important example is the Sankofa Museum, established in 2007. Rather than being a museum with typical historic items, it insteas chooses to preserve Rocinha's history through photographs, documents and residents' personal experiences. It also challenges negative stereotypes by allowing residents to tell their own stories.</p>
+              <p></p>
+              <h4 class="h6 fw-bold">Source</h4>
+              <p class="mb-0"><a href=">https://www.iied.org/favela-rocinha-decades-struggle-have-led-rich-political-cultural-landscape" style="color: white">https://www.iied.org/favela-rocinha-decades-struggle-have-led-rich-political-cultural-landscape</a></p>
+            </article>
+          </div>
+
+          <div class="col-md-6">
+            <article class="case-card">
+              <span class="case-number">02</span>
+              <span class="topic-tag ms-2">Environment</span>
+              <span class="topic-tag ms-2">SDG 11</span>
+              <h3 class="h4 fw-bold mt-3">Vidigal’s Upcycled Gardens</h3>
+              <p>Vidigal provides an excellent example of how residents can improve their surroundings through environmental initiatives and sustainable development. One particularly successful project is Parque Sitiê, which began in 2006 when two local residents decided to clean up an abandoned area that had accumulated rubbish for over 20 years.</p>
+              <p>Through their efforts, around 16 entire tonnes of waste were removed, with some of the discarded materials even being reused to help transform the area into a leisure space. What was once a neglected dumping ground became a green community space dedicated to recreation, urban agriculture and environmental education.</p>
+              <p>The park also provides opportunities for local residents to participate in workshops, learn about sustainability and develop new skills.</p>
+              <h4 class="h6 fw-bold">Source</h4>
+              <p class="mb-0"><a href="https://brazilfoundation.org/project/instituto-espaco-sitie-de-meio-ambiente-artes-e-tecnologia/" style="color: white">https://brazilfoundation.org/project/instituto-espaco-sitie-de-meio-ambiente-artes-e-tecnologia/</a></p>
+            </article>
+          </div>
+
+          <div class="col-md-6">
+            <article class="case-card">
+              <span class="case-number">03</span>
+              <span class="topic-tag ms-2">Arts &amp; culture</span>
+              <span class="topic-tag ms-2">SDG 10</span>
+              <h3 class="h4 fw-bold mt-3">Maré Art Centers</h3>
+              <p>In Maré, community organisations have used art and education to create opportunities for residents, particularly young people. A notably important example is the Maré Arts Center (Centro de Artes da Maré), which opened in 2009 through a partnership involving Redes da Maré and choreographer Lia Rodrigues.</p>
+              <p>The centre provides a space where residents can access free cultural activities, including dance and theatre performances, workshops, exhibitions and music events. It also houses the Free Dance School of Maré, established in 2011, which offers free dance education and professional training to residents of different ages. The school welcomes around 300 students each year.</p>
+              <p>By making arts education accessible, young people can develop creative skills, build confidence and explore opportunities they might not otherwise have access to. It also provides positive spaces for social interaction, learning and self-expression.</p>
+              <h4 class="h6 fw-bold">Source</h4>
+              <p class="mb-0"><a href="https://www.redesdamare.org.br/en/info/3/mare-arts-center" style="color: white">https://www.redesdamare.org.br/en/info/3/mare-arts-center</a></p>
+            </article>
+          </div>
+
+          <div class="col-md-6">
+            <article class="case-card">
+              <span class="case-number">04</span>
+              <span class="topic-tag ms-2">Media</span>
+              <span class="topic-tag ms-2">SDG 10</span>
+              <h3 class="h4 fw-bold mt-3">Providência Photojournalism</h3>
+              <p>In Morro da Providência, residents have used photography and creative activities to challenge negative perceptions of their community and provide opportunities for young people. One example is Casa Amarela Providência, a cultural and educational centre founded in 2009 by French artist JR and Brazilian photographer Maurício Hora.</p>
+              <p>The centre was created to give local children and young people a safe space to learn, develop their creativity and express themselves. Its activities have included photography workshops, English classes, reading facilities and other artistic and educational opportunities.</p>
+              <p>Photography is particularly important because it allows residents to document their own experiences and represent their neighbourhood from their own perspectives, rather than having their community defined by external media coverage of violence and poverty.</p>
+              <h4 class="h6 fw-bold">Source</h4>
+              <p class="mb-0"><a href="https://www.casaamarelaprovidencia.org/ourstory" style="color: white">https://www.casaamarelaprovidencia.org/ourstory</a></p>
+            </article>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container page-wrap d-flex flex-column flex-md-row justify-content-between gap-2">
+      <div><strong>Community Solutions in Brazil</strong><div class="small-muted">A page about community-led responses to poverty.</div></div>
+      <div class="small-muted">Explore the solutions. Focus on community voices.</div>
+    </div>
+  </footer>
+</body>
+</html>
